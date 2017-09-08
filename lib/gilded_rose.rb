@@ -17,12 +17,9 @@ class GildedRose
   end
 
   def update_quality
-
     @items.each do |crnt_item|
-      if (standard_quality_item?(crnt_item))
-        if (crnt_item.quality > 0)
-          crnt_item.quality = crnt_item.quality - 1
-        end
+      if standard_quality_item?(crnt_item)
+        crnt_item.quality -= 1 unless minimum_quality_item?(crnt_item)
       else
         if (crnt_item.quality < 50)
           crnt_item.quality = crnt_item.quality + 1
@@ -63,9 +60,14 @@ class GildedRose
     end
   end
 
+  private
   def standard_quality_item?(item)
     item.name != "Aged Brie" && 
     item.name != "Backstage passes to a TAFKAL80ETC concert" &&
     item.name != "Sulfuras, Hand of Ragnaros"
+  end
+
+  def minimum_quality_item?(item)
+    item.quality == 0
   end
 end
