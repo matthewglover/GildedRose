@@ -21,7 +21,7 @@ class GildedRose
       if standard_quality_item?(item)
         item.quality -= 1 unless minimum_quality_item?(item)
       else
-        if (item.quality < 50)
+        unless maximum_quality_item?(item)
           item.quality = item.quality + 1
           if (item.name == "Backstage passes to a TAFKAL80ETC concert")
             if (item.sell_in < 11)
@@ -69,5 +69,9 @@ class GildedRose
 
   def minimum_quality_item?(item)
     item.quality == 0
+  end
+
+  def maximum_quality_item?(item)
+    item.quality >= 50
   end
 end
