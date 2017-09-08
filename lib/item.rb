@@ -18,17 +18,6 @@ class Item
     sell_in < 0
   end
 
-  private
-  def aged_brie?
-    name == "Aged Brie"
-  end
-
-  def standard_quality?
-    name != "Aged Brie" && 
-    name != "Backstage passes to a TAFKAL80ETC concert" &&
-    name != "Sulfuras, Hand of Ragnaros"
-  end
-
   def minimum_quality?
     quality == 0
   end
@@ -43,10 +32,6 @@ class Item
 
   def increase_quality!
     @quality += 1
-  end
-
-  def backstage?
-    name =~ /^Backstage.+/
   end
 
   def increase_backstage_quality!
@@ -65,9 +50,5 @@ class Item
 
   def decrease_sell_in!
     @sell_in -= 1
-  end
-
-  def sulfurus?
-    name == "Sulfuras, Hand of Ragnaros"
   end
 end
