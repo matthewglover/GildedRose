@@ -23,18 +23,7 @@ class GildedRose
       else
         unless maximum_quality_item?(item)
           increase_item_quality!(item)
-          if backstage_item?(item)
-            if (item.sell_in < 11)
-              if (item.quality < 50)
-                item.quality = item.quality + 1
-              end
-            end
-            if (item.sell_in < 6)
-              if (item.quality < 50)
-                item.quality = item.quality + 1
-              end
-            end
-          end
+          increase_backstage_item_quality!(item) if backstage_item?(item)
         end
       end
       if (item.name != "Sulfuras, Hand of Ragnaros")
@@ -85,5 +74,18 @@ class GildedRose
 
   def backstage_item?(item)
     item.name =~ /^Backstage.+/
+  end
+
+  def increase_backstage_item_quality!(item)
+    if (item.sell_in < 11)
+      if (item.quality < 50)
+        item.quality = item.quality + 1
+      end
+    end
+    if (item.sell_in < 6)
+      if (item.quality < 50)
+        item.quality = item.quality + 1
+      end
+    end
   end
 end
