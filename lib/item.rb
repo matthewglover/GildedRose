@@ -18,6 +18,15 @@ class Item
     sell_in < 0
   end
 
+  def decrease_quality_by!(amount)
+    updated_quality = @quality - amount
+    if (updated_quality < 0)
+      @quality = 0
+    else
+      @quality = updated_quality
+    end
+  end
+
   def decrease_quality!
     @quality -= 1 unless minimum_quality?
   end

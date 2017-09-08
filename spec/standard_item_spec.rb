@@ -21,5 +21,11 @@ describe StandardItem do
       item.update
       expect(item.quality).to eq(0)
     end
+
+    it "handles edge cases" do
+      item = StandardItem.new("Item", -1, 1)
+      item.update
+      expect(item.quality).to eq(0)
+    end
   end
 end
