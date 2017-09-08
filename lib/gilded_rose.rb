@@ -4,8 +4,6 @@ class GildedRose
 
   attr_reader :items
 
-  @items = []
-
   def initialize
     @items = []
     @items << Item.new("+5 Dexterity Vest", 10, 20)

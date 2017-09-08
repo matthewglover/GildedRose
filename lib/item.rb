@@ -1,6 +1,6 @@
 class Item
 
-  attr_accessor :name, :sell_in, :quality
+  attr_reader :name, :sell_in, :quality
         
   def initialize(name, sell_in, quality)
     @name = name
@@ -9,84 +9,84 @@ class Item
   end
 
   def update
-    decrease_item_sell_in!(self) unless sulfurus_item?(self)
+    decrease_sell_in! unless sulfurus?
 
-    if standard_quality_item?(self)
-      decrease_item_quality!(self) unless minimum_quality_item?(self)
+    if standard_quality?
+      decrease_quality! unless minimum_quality?
     else
-      unless maximum_quality_item?(self)
-        increase_item_quality!(self)
-        increase_backstage_item_quality!(self) if backstage_item?(self)
+      unless maximum_quality?
+        increase_quality!
+        increase_backstage_quality! if backstage?
       end
     end
 
-    if expired_item?(self)
-      if aged_brie_item?(self)  
-        increase_item_quality!(self) if maximum_quality_item?(self)
+    if expired?
+      if aged_brie?  
+        increase_quality! if maximum_quality?
       else
-        if backstage_item?(self)
+        if backstage?
           self.quality = 0
         else
-          decrease_item_quality!(self) unless minimum_quality_item?(self) || sulfurus_item?(self)
+          decrease_quality! unless minimum_quality? || sulfurus?
         end
       end
     end
   end
 
-  def expired_item?(item)
-    item.sell_in < 0
+  def expired?
+    sell_in < 0
   end
 
   private
-  def aged_brie_item?(item)
-    item.name == "Aged Brie"
+  def aged_brie?
+    name == "Aged Brie"
   end
 
-  def standard_quality_item?(item)
-    item.name != "Aged Brie" && 
-    item.name != "Backstage passes to a TAFKAL80ETC concert" &&
-    item.name != "Sulfuras, Hand of Ragnaros"
+  def standard_quality?
+    name != "Aged Brie" && 
+    name != "Backstage passes to a TAFKAL80ETC concert" &&
+    name != "Sulfuras, Hand of Ragnaros"
   end
 
-  def minimum_quality_item?(item)
-    item.quality == 0
+  def minimum_quality?
+    quality == 0
   end
 
-  def maximum_quality_item?(item)
-    item.quality >= 50
+  def maximum_quality?
+    quality >= 50
   end
 
-  def decrease_item_quality!(item)
-    item.quality -= 1
+  def decrease_quality!
+    @quality -= 1
   end
 
-  def increase_item_quality!(item)
-    item.quality += 1
+  def increase_quality!
+    @quality += 1
   end
 
-  def backstage_item?(item)
-    item.name =~ /^Backstage.+/
+  def backstage?
+    name =~ /^Backstage.+/
   end
 
-  def increase_backstage_item_quality!(item)
+  def increase_backstage_quality!
     # NOTE: This code is not being tested
-    if item.sell_in < 11
-      unless maximum_quality_item?(item)
-        increase_item_quality!(item)
+    if sell_in < 11
+      unless maximum_quality?
+        increase_quality!
       end
     end
-    if item.sell_in < 6
-      unless maximum_quality_item?(item)
-        increase_item_quality!(item)
+    if sell_in < 6
+      unless maximum_quality?
+        increase_quality!
       end
     end
   end
 
-  def decrease_item_sell_in!(item)
-    item.sell_in -= 1
+  def decrease_sell_in!
+    @sell_in -= 1
   end
 
-  def sulfurus_item?(item)
-    item.name == "Sulfuras, Hand of Ragnaros"
+  def sulfurus?
+    name == "Sulfuras, Hand of Ragnaros"
   end
 end
