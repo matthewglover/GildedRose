@@ -6,6 +6,6 @@ class Sulfurus < Item
   end
 
   def update_quality!
-    increase_quality! unless maximum_quality?
+    increase_quality!
   end
 end
