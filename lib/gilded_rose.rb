@@ -28,27 +28,30 @@ class GildedRose
           increase_backstage_item_quality!(item) if backstage_item?(item)
         end
       end
-      if (item.sell_in < 0)
-        if (item.name != "Aged Brie")
-          if (item.name != "Backstage passes to a TAFKAL80ETC concert")
-            if (item.quality > 0)
-              if (item.name != "Sulfuras, Hand of Ragnaros")
-                item.quality = item.quality - 1
-              end
-            end
+
+      if expired_item?(item)
+        unless aged_brie_item?(item)  
+          if backstage_item?(item)
+            item.quality = 0
           else
-            item.quality = item.quality - item.quality
+            decrease_item_quality!(item) unless minimum_quality_item?(item) || sulfurus_item?(item)
           end
         else
-          if (item.quality < 50)
-            item.quality = item.quality + 1
-          end
+          increase_item_quality!(item) if maximum_quality_item?(item)
         end
       end
     end
   end
 
+  def expired_item?(item)
+    item.sell_in < 0
+  end
+
   private
+  def aged_brie_item?(item)
+    item.name == "Aged Brie"
+  end
+
   def standard_quality_item?(item)
     item.name != "Aged Brie" && 
     item.name != "Backstage passes to a TAFKAL80ETC concert" &&
