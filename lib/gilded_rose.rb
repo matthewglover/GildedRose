@@ -19,11 +19,11 @@ class GildedRose
   def update_quality
     @items.each do |item|
       if standard_quality_item?(item)
-        item.quality -= 1 unless minimum_quality_item?(item)
+        decrease_item_quality!(item) unless minimum_quality_item?(item)
       else
         unless maximum_quality_item?(item)
-          item.quality = item.quality + 1
-          if (item.name == "Backstage passes to a TAFKAL80ETC concert")
+          increase_item_quality!(item)
+          if backstage_item?(item)
             if (item.sell_in < 11)
               if (item.quality < 50)
                 item.quality = item.quality + 1
@@ -73,5 +73,17 @@ class GildedRose
 
   def maximum_quality_item?(item)
     item.quality >= 50
+  end
+
+  def decrease_item_quality!(item)
+    item.quality -= 1
+  end
+
+  def increase_item_quality!(item)
+    item.quality += 1
+  end
+
+  def backstage_item?(item)
+    item.name =~ /^Backstage.+/
   end
 end
