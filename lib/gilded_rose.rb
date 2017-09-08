@@ -18,6 +18,8 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
+      decrease_item_sell_in!(item) unless sulfurus_item?(item)
+
       if standard_quality_item?(item)
         decrease_item_quality!(item) unless minimum_quality_item?(item)
       else
@@ -25,9 +27,6 @@ class GildedRose
           increase_item_quality!(item)
           increase_backstage_item_quality!(item) if backstage_item?(item)
         end
-      end
-      if (item.name != "Sulfuras, Hand of Ragnaros")
-        item.sell_in = item.sell_in - 1;
       end
       if (item.sell_in < 0)
         if (item.name != "Aged Brie")
@@ -77,15 +76,24 @@ class GildedRose
   end
 
   def increase_backstage_item_quality!(item)
-    if (item.sell_in < 11)
-      if (item.quality < 50)
-        item.quality = item.quality + 1
+    # NOTE: This code is not being tested
+    if item.sell_in < 11
+      unless maximum_quality_item?(item)
+        increase_item_quality!(item)
       end
     end
-    if (item.sell_in < 6)
-      if (item.quality < 50)
-        item.quality = item.quality + 1
+    if item.sell_in < 6
+      unless maximum_quality_item?(item)
+        increase_item_quality!(item)
       end
     end
+  end
+
+  def decrease_item_sell_in!(item)
+    item.sell_in -= 1
+  end
+
+  def sulfurus_item?(item)
+    item.name == "Sulfuras, Hand of Ragnaros"
   end
 end
