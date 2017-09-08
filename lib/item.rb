@@ -9,7 +9,7 @@ class Item
   end
 
   def update
-    decrease_sell_in! unless sulfurus?
+    decrease_sell_in!
 
     if standard_quality?
       decrease_quality! unless minimum_quality?
