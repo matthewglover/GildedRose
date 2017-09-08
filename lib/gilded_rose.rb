@@ -30,14 +30,14 @@ class GildedRose
       end
 
       if expired_item?(item)
-        unless aged_brie_item?(item)  
+        if aged_brie_item?(item)  
+          increase_item_quality!(item) if maximum_quality_item?(item)
+        else
           if backstage_item?(item)
             item.quality = 0
           else
             decrease_item_quality!(item) unless minimum_quality_item?(item) || sulfurus_item?(item)
           end
-        else
-          increase_item_quality!(item) if maximum_quality_item?(item)
         end
       end
     end
