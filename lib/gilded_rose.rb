@@ -19,11 +19,12 @@ class GildedRose
   def update_quality
 
     @items.each do |crnt_item|
-      if (crnt_item.name != "Aged Brie" && crnt_item.name != "Backstage passes to a TAFKAL80ETC concert")
+      if (
+          crnt_item.name != "Aged Brie" && 
+          crnt_item.name != "Backstage passes to a TAFKAL80ETC concert" &&
+          crnt_item.name != "Sulfuras, Hand of Ragnaros")
         if (crnt_item.quality > 0)
-          if (crnt_item.name != "Sulfuras, Hand of Ragnaros")
-            crnt_item.quality = crnt_item.quality - 1
-          end
+          crnt_item.quality = crnt_item.quality - 1
         end
       else
         if (crnt_item.quality < 50)
