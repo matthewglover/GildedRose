@@ -1,4 +1,4 @@
 require "item"
 
-class BackstagePass < Item
+class ConjuredItem < Item
 end

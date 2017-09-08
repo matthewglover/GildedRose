@@ -1,4 +1,4 @@
 require "item"
 
-class ConjuredItem < Item
+class StandardItem < Item
 end

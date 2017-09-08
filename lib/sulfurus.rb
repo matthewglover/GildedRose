@@ -1,4 +1,4 @@
 require "item"
 
-class AgedBrie < Item
+class Sulfurus < Item
 end

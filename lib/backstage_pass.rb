@@ -1,4 +1,4 @@
 require "item"
 
-class Sulfurus < Item
+class BackstagePass < Item
 end

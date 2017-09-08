@@ -25,7 +25,7 @@ class Item
         increase_quality! if maximum_quality?
       else
         if backstage?
-          self.quality = 0
+          @quality = 0
         else
           decrease_quality! unless minimum_quality? || sulfurus?
         end
@@ -33,6 +33,7 @@ class Item
     end
   end
 
+  private
   def expired?
     sell_in < 0
   end
