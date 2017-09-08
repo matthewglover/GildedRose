@@ -10,20 +10,7 @@ class Item
 
   def update
     decrease_sell_in!
-
     update_quality!
-
-    if expired?
-      if aged_brie?  
-        increase_quality! if maximum_quality?
-      else
-        if backstage?
-          @quality = 0
-        else
-          decrease_quality! unless minimum_quality? || sulfurus?
-        end
-      end
-    end
   end
 
   private
