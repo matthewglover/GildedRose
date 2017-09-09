@@ -31,7 +31,7 @@ describe "AgedBrie" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(Updateable, AgedBrieable)
+      Item.new(name, sell_in, quality).extend(AgedBrieable, Updateable)
     end
   end
 end

@@ -26,7 +26,7 @@ class GildedRose
 
   private
   def make_useable_items!
-    items_with_modules.map { |(item, feature)| item.extend(Updateable, feature) }
+    items_with_modules.map { |(item, feature)| item.extend(feature, Updateable) }
   end
 
   def items_with_modules

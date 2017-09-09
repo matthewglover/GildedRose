@@ -1,7 +1,4 @@
-require "updateable"
-
 class Item 
-  include Updateable
 
   attr_accessor :name, :sell_in, :quality
         

@@ -14,7 +14,7 @@ describe "Sulfurus" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(Updateable, Sulfurusable)
+      Item.new(name, sell_in, quality).extend(Sulfurusable, Updateable)
     end
   end
 end

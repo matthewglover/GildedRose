@@ -29,7 +29,7 @@ describe "BackstagePass" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(Updateable, BackstagePassable)
+      Item.new(name, sell_in, quality).extend(BackstagePassable, Updateable)
     end
   end
 end
