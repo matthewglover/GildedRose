@@ -1,6 +1,6 @@
 require "item"
 require "updateable"
-require "sulfurusable"
+require "sulfurus"
 
 describe "Sulfurus" do
   describe "#update" do
@@ -14,7 +14,7 @@ describe "Sulfurus" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(Sulfurusable, Updateable)
+      Item.new(name, sell_in, quality).extend(Sulfurus, Updateable)
     end
   end
 end

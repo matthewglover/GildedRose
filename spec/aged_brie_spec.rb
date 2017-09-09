@@ -1,6 +1,6 @@
 require "item"
 require "updateable"
-require "aged_brieable"
+require "aged_brie"
 
 describe "AgedBrie" do
   describe "#update" do
@@ -31,7 +31,7 @@ describe "AgedBrie" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(AgedBrieable, Updateable)
+      Item.new(name, sell_in, quality).extend(AgedBrie, Updateable)
     end
   end
 end

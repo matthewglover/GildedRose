@@ -1,6 +1,6 @@
 require "item"
 require "updateable"
-require "backstage_passable"
+require "backstage_pass"
 
 describe "BackstagePass" do
   describe "#update!" do
@@ -29,7 +29,7 @@ describe "BackstagePass" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(BackstagePassable, Updateable)
+      Item.new(name, sell_in, quality).extend(BackstagePass, Updateable)
     end
   end
 end

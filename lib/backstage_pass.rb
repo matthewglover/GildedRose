@@ -1,4 +1,4 @@
-module BackstagePassable
+module BackstagePass
   def update_quality!
     if expired?
       clear_quality

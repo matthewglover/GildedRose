@@ -1,4 +1,4 @@
-module AgedBrieable
+module AgedBrie
   def update_quality!
     increase_quality_by!(increment)
   end

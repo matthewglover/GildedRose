@@ -1,6 +1,6 @@
 require "item"
 require "updateable"
-require "standardable"
+require "standard"
 
 describe "StandardItem" do
   describe "#update" do
@@ -31,7 +31,7 @@ describe "StandardItem" do
     end
 
     def new_item(name, sell_in, quality)
-      Item.new(name, sell_in, quality).extend(Standardable, Updateable)
+      Item.new(name, sell_in, quality).extend(Standard, Updateable)
     end
   end
 end

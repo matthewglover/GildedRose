@@ -1,8 +1,9 @@
 require "item"
 require "updateable"
-require "standardable"
-require "sulfurusable"
-require "backstage_passable"
+require "aged_brie"
+require "standard"
+require "sulfurus"
+require "backstage_pass"
 
 class GildedRose
 
@@ -31,11 +32,11 @@ class GildedRose
 
   def items_with_modules
     @items.zip([
-      Standardable,
-      AgedBrieable,
-      Standardable,
-      Sulfurusable,
-      BackstagePassable,
-      Standardable])
+      Standard,
+      AgedBrie,
+      Standard,
+      Sulfurus,
+      BackstagePass,
+      Standard])
   end
 end

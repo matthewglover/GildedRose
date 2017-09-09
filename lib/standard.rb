@@ -1,4 +1,4 @@
-module Standardable
+module Standard
   def update_quality!
     decrease_quality_by!(decrement)
   end

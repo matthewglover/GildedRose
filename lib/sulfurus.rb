@@ -1,4 +1,4 @@
-module Sulfurusable
+module Sulfurus
   def update
   end
 end
