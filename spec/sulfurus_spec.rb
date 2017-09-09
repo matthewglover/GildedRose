@@ -2,7 +2,7 @@ require "item"
 require "updateable"
 require "sulfurusable"
 
-describe Sulfurus do
+describe "Sulfurus" do
   describe "#update" do
     it "has static quality of 80" do
       item = new_item("item", 0, 80)

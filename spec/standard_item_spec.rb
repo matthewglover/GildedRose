@@ -2,7 +2,7 @@ require "item"
 require "updateable"
 require "standardable"
 
-describe StandardItem do
+describe "StandardItem" do
   describe "#update" do
     it "decreases sell_in and quality for unexpired item" do
       item = new_item("Item", 10, 20)
