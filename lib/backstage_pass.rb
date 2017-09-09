@@ -1,3 +1,5 @@
+require "updateable"
+
 module BackstagePass
   def update_quality!
     if expired?
@@ -18,6 +20,6 @@ module BackstagePass
   end
   
   def clear_quality
-    @quality = 0
+    @quality = Updateable::MIN_QUALITY
   end
 end
