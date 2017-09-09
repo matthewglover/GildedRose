@@ -6,6 +6,5 @@ class Sulfurus < Item
   end
 
   def update_quality!
-    increase_quality!
   end
 end

@@ -15,7 +15,7 @@ class Item
 
   private
   def expired?
-    sell_in < 0
+    sell_in <= 0
   end
 
   def decrease_quality_by!(amount)
@@ -27,12 +27,13 @@ class Item
     end
   end
 
-  def decrease_quality!
-    @quality -= 1 unless minimum_quality?
-  end
-
-  def increase_quality!
-    @quality += 1 unless maximum_quality?
+  def increase_quality_by!(amount)
+    updated_quality = @quality + amount
+    if (updated_quality > 50)
+      @quality = 50
+    else
+      @quality = updated_quality
+    end
   end
 
   def minimum_quality?

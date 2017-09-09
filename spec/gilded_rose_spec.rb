@@ -32,7 +32,7 @@ describe GildedRose do
       expect(@aged_brie.quality).to eq(start_quality + 1)
     end
 
-    it "has no affect on sulfurus" do
+    it "has no effect on sulfurus" do
       start_sell_in = @sulfurus.sell_in
       start_quality = @sulfurus.quality
       @gilded_rose.update_quality

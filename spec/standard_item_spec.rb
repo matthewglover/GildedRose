@@ -9,7 +9,7 @@ describe StandardItem do
       expect(item.quality).to eq(19)
     end
 
-    it "decreases quality by 2 when item expired item" do
+    it "decreases quality by 2 when item expired" do
       item = StandardItem.new("Item", 0, 20)
       item.update
       expect(item.sell_in).to eq(-1)
