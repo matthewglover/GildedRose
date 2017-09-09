@@ -17,23 +17,25 @@ class GildedRose
     @items << Item.new("Backstage passes to a TAFKAL80ETC concert", 15, 20)
     @items << Item.new("Conjured Mana Cake", 3, 6)
 
-    @usable_items = @items.zip(features).map do |(item, feature)|
-      item.extend(Updateable, feature)
-    end
+    @useable_items = make_useable_items!
   end
 
   def update_quality
-    @usable_items.each(&:update)
+    @useable_items.each(&:update)
   end
 
   private
-  def features 
-    [
+  def make_useable_items!
+    items_with_modules.map { |(item, feature)| item.extend(Updateable, feature) }
+  end
+
+  def items_with_modules
+    @items.zip([
       Standardable,
       AgedBrieable,
       Standardable,
       Sulfurusable,
       BackstagePassable,
-      Standardable]
+      Standardable])
   end
 end
