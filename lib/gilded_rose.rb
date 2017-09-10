@@ -22,7 +22,7 @@ class GildedRose
   end
 
   def update_quality
-    @useable_items.each(&:update)
+    @useable_items.each(&:update!)
   end
 
   private

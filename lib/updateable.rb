@@ -3,7 +3,7 @@ module Updateable
   MAX_QUALITY = 50
   MIN_QUALITY = 0
 
-  def update
+  def update!
     decrease_sell_in!
     update_quality!
   end

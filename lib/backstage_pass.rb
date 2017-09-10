@@ -10,12 +10,12 @@ module BackstagePass
   end
 
   def increment
-    return 3 if lte(5)
-    return 2 if lte(10)
+    return 3 if days_remaining(5)
+    return 2 if days_remaining(10)
     return 1
   end
 
-  def lte(days)
+  def days_remaining(days)
     sell_in <= days
   end
   

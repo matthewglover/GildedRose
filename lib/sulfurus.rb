@@ -1,4 +1,4 @@
 module Sulfurus
-  def update
+  def update!
   end
 end
