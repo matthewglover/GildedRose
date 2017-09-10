@@ -46,7 +46,7 @@ describe GildedRose do
       expect(@backstage_pass.quality).to eq(start_quality + 1)
     end
 
-    xit "degrades quality twice as fast for conjured items" do
+    it "degrades quality twice as fast for conjured items" do
       start_quality = @conjured_item.quality
       @gilded_rose.update_quality
       expect(@conjured_item.quality).to eq(start_quality - 2)

@@ -4,6 +4,7 @@ require "aged_brie"
 require "standard"
 require "sulfurus"
 require "backstage_pass"
+require "conjured"
 
 class GildedRose
 
@@ -37,6 +38,6 @@ class GildedRose
       Standard,
       Sulfurus,
       BackstagePass,
-      Standard])
+      Conjured])
   end
 end
